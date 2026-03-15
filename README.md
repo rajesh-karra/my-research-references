@@ -22,6 +22,7 @@ This repository organizes my learning, research practice, and contribution goals
 - [KnowledgeFace and Earth AI Roadmap](notes/2026-03-15-knowledgeface-and-earth-ai-roadmap.md)
 - [12-Month Execution Plan with Weekly Priorities](notes/2026-03-15-12-month-execution-plan.md)
 - [Month 1 Daily Sprint Board (4 Weeks)](notes/2026-03-15-month-1-daily-sprint-board.md)
+- [Month 1 Companion Checklist](notes/2026-03-15-month-1-companion-checklist.md)
 
 ## Naming Convention
 
@@ -51,6 +52,7 @@ bash scripts/update-readme-index.sh
 - [2026-03-15-knowledgeface-and-earth-ai-roadmap.md](notes/2026-03-15-knowledgeface-and-earth-ai-roadmap.md)
 - [2026-03-15-llm-quantum-ai-learning-pathway.md](notes/2026-03-15-llm-quantum-ai-learning-pathway.md)
 - [2026-03-15-mathematics-pathway.md](notes/2026-03-15-mathematics-pathway.md)
+- [2026-03-15-month-1-companion-checklist.md](notes/2026-03-15-month-1-companion-checklist.md)
 - [2026-03-15-month-1-daily-sprint-board.md](notes/2026-03-15-month-1-daily-sprint-board.md)
 
 ### Paper Summaries
