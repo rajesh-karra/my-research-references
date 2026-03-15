@@ -1,0 +1,61 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-mail
+            --accept 200,206,301,302,303,307,308,403,429
+            README.md notes/**/*.md paper-summaries/**/*.md
+
+  notebook-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate notebook JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          notebooks = sorted(root.glob('notebooks/**/*.ipynb'))
+          if not notebooks:
+              print('No notebooks found. Skipping validation.')
+              raise SystemExit(0)
+
+          failed = []
+          for nb in notebooks:
+              try:
+                  json.loads(nb.read_text(encoding='utf-8'))
+                  print(f'OK: {nb}')
+              except Exception as exc:  # pylint: disable=broad-exception-caught
+                  failed.append((nb, str(exc)))
+
+          if failed:
+              for path, err in failed:
+                  print(f'INVALID: {path} -> {err}')
+              raise SystemExit(1)
+
+          print('All notebooks are valid JSON.')
+          PY
